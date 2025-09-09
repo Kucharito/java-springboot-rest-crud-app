@@ -89,8 +89,10 @@ or open in IntelliJ IDEA and run **ProjektRestAppApplication.java.**
 | DELETE | `/deleteCoachById/{id}`     | Delete coach by ID       |
 
 
-## Example requests (Postman / curl)
-### Create a team
+## 📑 Example requests (Postman / curl)
+
+### 🟢 Create a team
+```http
 POST http://localhost:8081/addTeam
 Content-Type: application/json
 
@@ -99,11 +101,12 @@ Content-Type: application/json
   "skratkaTimu": "SPR",
   "krajinaPovodu": "SK"
 }
+```
 
 ### Create a player (with team id 1)
+```http
 POST http://localhost:8081/addPlayer
 Content-Type: application/json
-
 {
   "meno": "Jozef",
   "priezvisko": "Mrkva",
@@ -111,9 +114,12 @@ Content-Type: application/json
   "datumNarodenia": "2000-05-01",
   "tim": { "id": 1 }
 }
+```
 
 ### GetAllTeams 
+```http
 GET http://localhost:8081/getAllTeams
+```
 
 
 ## 🖥️ Frontend (NovyProjektJava.html)
