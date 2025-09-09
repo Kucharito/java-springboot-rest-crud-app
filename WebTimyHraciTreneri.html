@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Management System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>Add a New Team</h2>
+            <form id="teamForm">
+                <div class="form-group">
+                    <label for="nazovTimu">Team Name:</label>
+                    <input type="text" class="form-control" id="nazovTimu" name="nazovTimu" required>
+                </div>
+                <div class="form-group">
+                    <label for="skratkaTimu">Team Abbreviation:</label>
+                    <input type="text" class="form-control" id="skratkaTimu" name="skratkaTimu" required>
+                </div>
+                <div class="form-group">
+                    <label for="krajinaPovodu">Country of Origin:</label>
+                    <input type="text" class="form-control" id="krajinaPovodu" name="krajinaPovodu" required>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addTeam()">Add Team</button>
+            </form>
+        </div>
+    
+
+        <div class="col-sm-4">
+            <h2>Add a New Player</h2>
+            <form id="playerForm">
+                <div class="form-group">
+                    <label for="meno">First Name:</label>
+                    <input type="text" class="form-control" id="menoPlayer" name="meno" required>
+                </div>
+                <div class="form-group">
+                    <label for="priezvisko">Last Name:</label>
+                    <input type="text" class="form-control" id="priezviskoPlayer" name="priezvisko" required>
+                </div>
+                <div class="form-group">
+                    <label for="datumNarodenia">Date of Birth:</label>
+                    <input type="date" class="form-control" id="datumNarodenia" name="datumNarodenia" required>
+                </div>
+                <div class="form-group">
+                    <label for="pozicia">Position:</label>
+                    <input type="text" class="form-control" id="pozicia" name="pozicia" required>
+                </div>
+                <div class="form-group">
+                    <label for="teamSelectPlayer">Team:</label>
+                    <select class="form-control" id="teamSelectPlayer" name="tim_id" required></select>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addPlayer()">Add Player</button>
+            </form>
+        </div>
+    
+
+
+        <div class="col-sm-4">
+            <h2>Add a New Coach</h2>
+            <form id="coachForm">
+                <div class="form-group">
+                    <label for="meno">First Name:</label>
+                    <input type="text" class="form-control" id="meno" name="meno" required>
+                </div>
+                <div class="form-group">
+                    <label for="priezvisko">Last Name:</label>
+                    <input type="text" class="form-control" id="priezvisko" name="priezvisko" required>
+                </div>
+                <div class="form-group">
+                    <label for="specializacia">Specialization:</label>
+                    <input type="text" class="form-control" id="specializacia" name="specializacia">
+                </div>
+                <div class="form-group">
+                    <label for="teamSelectCoach">Team:</label>
+                    <select class="form-control" id="teamSelectCoach" name="tim_id" required></select>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addCoach()">Add Coach</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+ <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-white text-white p-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-primary text-white p-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-white text-white p-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Delete a Player</h2>
+                <form id="formularOdstranitHraca" method="post">
+                    <label for="idOdstranit">Select a player to delete:</label><br>
+                    <select id="idOdstranit" name="idOdstranit">
+                    </select><br><br>
+                    <input type="submit" value="Delete">
+                    <div id="feedback5"></div>
+                </form>
+            </div>
+           
+            <div class="col-sm-4">
+                <h2>Delete a Coach</h2>
+                <form id="formularOdstranitTrenera" method="post">
+                    <label for="idOdstranitCoach">Select a coach to delete:</label><br>
+                    <select id="idOdstranitCoach" name="idOdstranitCoach">
+                    </select><br><br>
+                    <input type="submit" value="Delete">
+                    <div id="feedbackCoach"></div>
+                </form>
+            </div>
+            
+            <div class="col-sm-4">
+                <h2>Delete a Team</h2>
+                <form id="formularOdstranitTim" method="post">
+                    <label for="idOdstranitTeam">Select a team to delete:</label><br>
+                    <select id="idOdstranitTeam" name="idOdstranitTeam">
+                    </select><br><br>
+                    <input type="submit" value="Delete">
+                    <div id="feedbackTeam"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+ <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-white text-white p-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-primary text-white p-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-white text-white p-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="row">
+    <div class="col-sm-4">
+        <h2>Editovať hráča</h2>
+        <form id="formularEditovatHraca" method="post">
+            <div class="form-group">
+                <label for="idEditovat">Vyberte hráča na editáciu:</label><br>
+                <select id="idEditovat" name="idEditovat">
+                </select><br><br>
+            </div>
+            <div class="form-group">
+                <label for="noveMeno">Nové meno:</label><br>
+                <input type="text" id="noveMeno" name="noveMeno" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="novePriezvisko">Nové priezvisko:</label><br>
+                <input type="text" id="novePriezvisko" name="novePriezvisko" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="novyDatumNarodenia">Nový dátum narodenia:</label><br>
+                <input type="date" id="novyDatumNarodenia" name="novyDatumNarodenia" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="novaPozicia">Nová pozícia:</label><br>
+                <input type="text" id="novaPozicia" name="novaPozicia" required><br><br>
+            </div>
+            <button type="button" onclick="editPlayer()">Uložiť zmeny</button>
+            <div id="feedbackEditHrac"></div>
+        </form>
+    </div>
+
+
+
+   
+
+    
+        <div class="col-sm-4">
+            <h2>Editovať tím</h2>
+            <form id="formularEditovatTim" method="post">
+                <div class="form-group">
+                    <label for="idEditovatTim">Vyberte tím na editáciu:</label><br>
+                    <select id="idEditovatTim" name="idEditovatTim">
+                    </select><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="novyNazovTimu">Nový názov tímu:</label><br>
+                    <input type="text" id="novyNazovTimu" name="novyNazovTimu" required><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="novaSkratkaTimu">Nová skratka tímu:</label><br>
+                    <input type="text" id="novaSkratkaTimu" name="novaSkratkaTimu" required><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="novaKrajinaPovodu">Nová krajina pôvodu:</label><br>
+                    <input type="text" id="novaKrajinaPovodu" name="novaKrajinaPovodu" required><br><br>
+                </div>
+                <input type="submit" value="Uložiť zmeny" onclick="editTeam()">
+                <div id="feedbackEditTim"></div>
+            </form>
+        </div>
+   
+   
+    
+    <div class="col-sm-4">
+        <h2>Editovať trénera</h2>
+        <form id="formularEditovatTrenera" method="post">
+            <div class="form-group">
+                <label for="idEditovatTrenera">Vyberte trénera na editáciu:</label><br>
+                <select id="idEditovatTrenera" name="idEditovatTrenera">
+                </select><br><br>
+            </div>
+            <div class="form-group">
+                <label for="noveMenoTrenera">Nové meno trénera:</label><br>
+                <input type="text" id="noveMenoTrenera" name="noveMenoTrenera" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="novePriezviskoTrenera">Nové priezvisko trénera:</label><br>
+                <input type="text" id="novePriezviskoTrenera" name="novePriezviskoTrenera" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="novaSpecializaciaTrenera">Nová špecializácia trénera:</label><br>
+                <input type="text" id="novaSpecializaciaTrenera" name="novaSpecializaciaTrenera"><br><br>
+            </div>
+            <button type="button" onclick="editCoach()">Uložiť zmeny</button>
+            <div id="feedbackEditTrener"></div>
+        </form>
+    </div>
+</div>
+</div>
+
+ <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-white text-white p-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-primary text-white p-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-white text-white p-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <h3>Teams</h3>
+        <ul id="teamList"></ul>
+    </div>
+
+    <div>
+        <h3>Players</h3>
+        <ul id="playerList"></ul>
+    </div>
+    <div>
+        <h3>Coaches</h3>
+        <ul id="coachList"></ul>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loadTeams();
+        loadPlayers();
+        loadCoaches();
+        attachFormEventHandlers();
+    });
+
+    function loadTeams() {
+        fetch('http://localhost:8081/getAllTeams')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to fetch teams');
+                return response.json();
+            })
+            .then(teams => {
+                const teamList = document.getElementById('teamList');
+                teamList.innerHTML = ''; 
+
+                teams.forEach(team => {
+                    let li = document.createElement('li');
+                    li.textContent = `${team.nazovTimu}, Abbreviation: ${team.skratkaTimu}, Country: ${team.krajinaPovodu}`;
+                    teamList.appendChild(li);
+                });
+
+                const teamSelectPlayer = document.getElementById('teamSelectPlayer');
+                const teamSelectCoach = document.getElementById('teamSelectCoach');
+                teamSelectPlayer.innerHTML = ''; 
+                teamSelectCoach.innerHTML = '';
+
+                teams.forEach(team => {
+                    let optionPlayer = new Option(team.nazovTimu, team.id);
+                    let optionCoach = new Option(team.nazovTimu, team.id);
+                    teamSelectPlayer.appendChild(optionPlayer);
+                    teamSelectCoach.appendChild(optionCoach);
+                });
+
+                const selectTeamElement = document.getElementById('idOdstranitTeam');
+                selectTeamElement.innerHTML = '';
+                teams.forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.id;
+                    option.textContent = team.nazovTimu;
+                    selectTeamElement.appendChild(option);
+                });
+            })
+            .catch(error => {
+                const teamList = document.getElementById('teamList');
+                teamList.innerHTML = '<li>No teams found.</li>';
+            });
+    }
+
+    function loadPlayers() {
+    fetch('http://localhost:8081/getAllPlayers')
+        .then(response => response.json())
+        .then(players => {
+            const playerList = document.getElementById('playerList');
+            playerList.innerHTML = '';
+
+            players.forEach(player => {
+                console.log(player);
+                let li = document.createElement('li');
+                let teamName = player.tim ? player.tim.nazovTimu : 'No Team'; 
+                li.textContent = `${player.meno} ${player.priezvisko}, Position: ${player.pozicia}, Team: ${teamName}`;
+                playerList.appendChild(li);
+            });
+
+            const selectElement = document.getElementById('idOdstranit');
+            selectElement.innerHTML = '';
+            players.forEach(player => {
+                const option = document.createElement('option');
+                option.value = player.id;
+                option.textContent = `${player.meno} ${player.priezvisko}`;
+                selectElement.appendChild(option);
+            });
+
+            const selectEditPlayer = document.getElementById('idEditovat');
+            selectEditPlayer.innerHTML = '';
+            players.forEach(player => {
+                const option = document.createElement('option');
+                option.value = player.id;
+                option.textContent = `${player.meno} ${player.priezvisko}`;
+                selectEditPlayer.appendChild(option);
+            });
+        })
+        .catch(error => {
+            const playerList = document.getElementById('playerList');
+            playerList.innerHTML = '<li>No players found.</li>';
+        });
+}
+
+
+
+    function loadCoaches() {
+    fetch('http://localhost:8081/getAllCoaches')
+        .then(response => response.json())
+        .then(coaches => {
+            const coachList = document.getElementById('coachList');
+            coachList.innerHTML = '';
+
+            coaches.forEach(coach => {
+                let li = document.createElement('li');
+                let teamName = coach.tim ? coach.tim.nazovTimu : 'No Team'; 
+                li.textContent = `${coach.meno} ${coach.priezvisko}, Specialization: ${coach.specializacia}, Team: ${teamName}`;
+                coachList.appendChild(li);
+            });
+
+            const selectCoachElement = document.getElementById('idOdstranitCoach');
+            selectCoachElement.innerHTML = '';
+            coaches.forEach(coach => {
+                const option = document.createElement('option');
+                option.value = coach.id;
+                option.textContent = `${coach.meno} ${coach.priezvisko}`;
+                selectCoachElement.appendChild(option);
+            });
+
+            const selectEditCoach = document.getElementById('idEditovatTrenera');
+            selectEditCoach.innerHTML = '';
+            coaches.forEach(coach => {
+                const option = document.createElement('option');
+                option.value = coach.id;
+                option.textContent = `${coach.meno} ${coach.priezvisko}`;
+                selectEditCoach.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading coaches:', error);
+            const coachList = document.getElementById('coachList');
+            coachList.innerHTML = '<li>No coaches found.</li>';
+        });
+}
+
+
+
+    function attachFormEventHandlers() {
+        document.getElementById('teamForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            addTeam();
+        });
+
+        document.getElementById('playerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            addPlayer();
+        });
+
+        document.getElementById('coachForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            addCoach();
+        });
+
+        document.getElementById('formularOdstranitHraca').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const playerId = formData.get('idOdstranit');
+            deletePlayer(playerId);
+        });
+        document.getElementById('formularOdstranitTrenera').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const coachId = formData.get('idOdstranitCoach');
+            deleteCoach(coachId);
+        });
+        document.getElementById('formularOdstranitTim').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const teamId = formData.get('idOdstranitTeam');
+            deleteTeam(teamId);
+        });
+        document.getElementById('formularEditovatHraca').addEventListener('click', function (event) {
+            event.preventDefault();
+            loadExistingPlayersForEdit();
+        });
+        document.getElementById('formularEditovatTrenera').addEventListener('click', function (event) {
+            event.preventDefault();
+            loadExistingCoachesForEdit();
+        });
+
+        document.getElementById('formularEditovatTim').addEventListener('click', function (event) {
+            event.preventDefault();
+            loadExistingTeamsForEdit();
+        });
+
+
+    }
+
+    function addTeam() {
+        const teamData = {
+            nazovTimu: document.getElementById('nazovTimu').value,
+            skratkaTimu: document.getElementById('skratkaTimu').value,
+            krajinaPovodu: document.getElementById('krajinaPovodu').value
+        };
+        fetch('http://localhost:8081/addTeam', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(teamData)
+        })
+            .then(checkResponseStatus)
+            .then(() => {
+                alert('Team added successfully');
+                loadTeams();
+            })
+            .catch(error => alert('Failed to add team: ' + error.message));
+    }
+
+    function addPlayer() {
+        const playerData = {
+            meno: document.getElementById('menoPlayer').value,
+            priezvisko: document.getElementById('priezviskoPlayer').value,
+            datumNarodenia: document.getElementById('datumNarodenia').value,
+            pozicia: document.getElementById('pozicia').value,
+            tim: {id: document.getElementById('teamSelectPlayer').value}
+        };
+        fetch('http://localhost:8081/addPlayer', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(playerData)
+        })
+            .then(checkResponseStatus)
+            .then(() => {
+                alert('Player added successfully');
+                loadPlayers(); 
+            })
+            .catch(error => alert('Failed to add player: ' + error.message));
+    }
+
+    function addCoach() {
+        const coachData = {
+            meno: document.getElementById('meno').value,
+            priezvisko: document.getElementById('priezvisko').value,
+            specializacia: document.getElementById('specializacia').value,
+            tim: {id: document.getElementById('teamSelectCoach').value}
+        };
+        fetch('http://localhost:8081/addCoach', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(coachData)
+        })
+            .then(checkResponseStatus)
+            .then(() => {
+                alert('Coach added successfully');
+                loadCoaches(); 
+            })
+            .catch(error => alert('Failed to add coach: ' + error.message));
+    }
+
+    function deletePlayer(playerId) {
+        fetch(`http://localhost:8081/deletePlayerById/${playerId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('feedback5').innerText = 'Player successfully deleted.';
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting player:', error);
+                document.getElementById('feedback5').innerText = 'Error deleting player. Please try again later.';
+            });
+    }
+
+    function deleteCoach(coachId) {
+        fetch(`http://localhost:8081/deleteCoachById/${coachId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('feedbackCoach').innerText = 'Coach successfully deleted.';
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting coach:', error);
+                document.getElementById('feedbackCoach').innerText = 'Error deleting coach. Please try again later.';
+            });
+    }
+
+    function deleteTeam(teamId) {
+        fetch(`http://localhost:8081/deleteTeamById/${teamId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('feedbackTeam').innerText = 'Team successfully deleted.';
+                    loadTeams();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting team:', error);
+                document.getElementById('feedbackTeam').innerText = 'Error deleting team. Please try again later.';
+            });
+    }
+
+
+    function checkResponseStatus(response) {
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(text || 'Something went wrong on the server!');
+            });
+        }
+        return response.json();
+    }
+
+    function editPlayer() {
+    const playerId = document.getElementById('idEditovat').value;
+    const playerData = {
+        meno: document.getElementById('noveMeno').value,
+        priezvisko: document.getElementById('novePriezvisko').value,
+        datumNarodenia: document.getElementById('novyDatumNarodenia').value,
+        pozicia: document.getElementById('novaPozicia').value,
+        tim: {id: document.getElementById('teamSelectPlayer').value}
+    };
+    fetch(`http://localhost:8081/updatePlayerById/${playerId}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(playerData)
+    })
+        .then(checkResponseStatus)
+        .then(() => {
+            alert('Player updated successfully');
+            loadPlayers(); 
+        })
+        .catch(error => alert('Failed to update player: ' + error.message));
+}
+
+
+    function editCoach() {
+    const coachId = document.getElementById('idEditovatTrenera').value; 
+    const coachData = {
+        meno: document.getElementById('noveMenoTrenera').value,
+        priezvisko: document.getElementById('novePriezviskoTrenera').value,
+        specializacia: document.getElementById('novaSpecializaciaTrenera').value,
+        tim: { id: document.getElementById('teamSelectCoach').value }
+    };
+    fetch(`http://localhost:8081/updateCoachById/${coachId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(coachData)
+    })
+        .then(checkResponseStatus)
+        .then(() => {
+            alert('Coach updated successfully');
+            loadCoaches(); 
+        })
+        .catch(error => alert('Failed to update coach: ' + error.message));
+}
+
+    function editTeam() {
+        const teamId = document.getElementById('idEditovatTim').value;
+        const teamData = {
+            nazovTimu: document.getElementById('novyNazovTimu').value,
+            skratkaTimu: document.getElementById('novaSkratkaTimu').value,
+            krajinaPovodu: document.getElementById('novaKrajinaPovodu').value
+        };
+        console.log(teamData);
+        fetch(`http://localhost:8081/updateTeamById/${teamId}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(teamData)
+        })
+            .then(checkResponseStatus)
+            .then(() => {
+                alert('Team updated successfully');
+                loadTeams(); 
+            })
+            .catch(error => alert('Failed to update team: ' + error.message));
+    }
+
+    function loadExistingTeamsForEdit() {
+        fetch('http://localhost:8081/getAllTeams')
+            .then(response => response.json())
+            .then(teams => {
+                const selectElement = document.getElementById('idEditovatTim');
+                selectElement.innerHTML = ''; 
+
+                teams.forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.id;
+                    option.textContent = team.nazovTimu;
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error loading existing teams:', error));
+    }
+
+    function loadExistingPlayersForEdit() {
+        fetch('http://localhost:8081/getAllPlayers')
+            .then(response => response.json())
+            .then(players => {
+                const selectElement = document.getElementById('idEditovatHraca');
+                selectElement.innerHTML = '';
+
+                players.forEach(player => {
+                    const option = document.createElement('option');
+                    option.value = player.id;
+                    option.textContent = `${player.meno} ${player.priezvisko}`;
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error loading existing players:', error));
+    }
+
+    function loadExistingCoachesForEdit() {
+        fetch('http://localhost:8081/getAllCoaches')
+            .then(response => response.json())
+            .then(coaches => {
+                const selectElement = document.getElementById('idEditovatTrenera');
+                selectElement.innerHTML = ''; 
+
+                coaches.forEach(coach => {
+                    const option = document.createElement('option');
+                    option.value = coach.id;
+                    option.textContent = `${coach.meno} ${coach.priezvisko}`;
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error loading existing coaches:', error));
+    }
+
+
+</script>
+</body>
+</html>
