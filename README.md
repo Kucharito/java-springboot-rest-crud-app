@@ -13,6 +13,17 @@ It was created as part of the Java II course and shows how to build and use a CR
 - **Lombok**
 - **HTML + JavaScript** – simple frontend consuming the API
 
+## 📂 Project structure
+
+This repository contains two main parts:
+
+- **ProjektRestApp/** → Spring Boot backend (REST API + H2 database)  
+  👉 this is the main project you need to open in IntelliJ IDEA or run with Maven (`mvn spring-boot:run`).
+
+- **NovyProjektJava.html** → a simple HTML/JavaScript frontend that communicates with the backend.  
+  👉 open this file in your browser after starting the backend.
+
+
 ---
 ## 🚀 Running the project
 
@@ -128,7 +139,7 @@ The project also includes a simple **HTML/JavaScript frontend** that consumes th
 
 ### How to use
 1. Start the backend (**ProjektRestApp**) on [http://localhost:8081](http://localhost:8081).  
-2. Open `NovyProjektJava.html` in your browser.  
+2. Open `WebTimyHraciTreneri.html` in your browser.  
 3. The page allows you to:
    - view teams, players, and coaches,
    - add new records,
