@@ -20,7 +20,7 @@ This repository contains two main parts:
 - **ProjektRestApp/** → Spring Boot backend (REST API + H2 database)  
   👉 this is the main project you need to open in IntelliJ IDEA or run with Maven (`mvn spring-boot:run`).
 
-- **NovyProjektJava.html** → a simple HTML/JavaScript frontend that communicates with the backend.  
+- **WebTimyHraciTreneri.html** → a simple HTML/JavaScript frontend that communicates with the backend.  
   👉 open this file in your browser after starting the backend.
 
 
