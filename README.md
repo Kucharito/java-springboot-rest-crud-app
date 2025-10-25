@@ -32,6 +32,14 @@ or open in IntelliJ IDEA and run **ProjektRestAppApplication.java.**
 
 ---
 
+## UI Screenshots
+
+<p align="center">
+  <img src="screenshots/Screenshot_1.png" alt="First screenshot" width="">
+  <img src="screenshots/Screenshot_2.png" alt="Second screenshot" width="">
+</p>
+
+
 ## 🗄️ Database schema (auto-generated)
 
 ### Teams (TIMY)
